@@ -1,5 +1,5 @@
 # kubernetes 
 k8s sample 코드 입니다.
 
-- [pod](./pod/)
-- 
+- [Pod](./pod/)
+- [ReplicaSet](./replicaset/)
