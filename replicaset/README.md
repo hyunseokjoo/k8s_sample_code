@@ -7,6 +7,7 @@ kubectl apply -f replicaset.yaml
 # get replicaset info
 kubectl get replicaset 
 kubectl get rs 
+kubectl get rs replica-sample -o wide
 
 # get pod info
 kubectl get pods --show-labels
@@ -28,6 +29,7 @@ kubectl apply -f <replicaset yaml 파일 경로>
 
 # replicaset 조회
 kubectl get rs
+kubectl get rs <replicasetName> -o wide
 kubectl get pods --show-labels
 
 # replicaset scaling
