@@ -1,6 +1,6 @@
-# k8s_sample_code
+# Pod Sample Code
 
-### Pod 관련 Sample 명령어
+### Pod 실습 명령어
 
 ```bash
 # check pod info

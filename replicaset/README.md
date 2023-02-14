@@ -1,12 +1,14 @@
-# replicaset sample code
-### 실습 명령어 순서
+# ReplicaSet sample code
+
+### ReplicaSet 실습 명령어
+
 ```bash
-# create replicaset 
+# create replicaset
 kubectl apply -f replicaset.yaml
 
 # get replicaset info
-kubectl get replicaset 
-kubectl get rs 
+kubectl get replicaset
+kubectl get rs
 kubectl get rs replica-sample -o wide
 
 # get pod info
@@ -22,7 +24,8 @@ kubectl scale --replicas=2 replicaset replica-sample
 kubectl delete replicaset replica-sample
 ```
 
-### Replicaset관련 kubectl 명령어
+### ReplicaSet관련 kubectl 명령어
+
 ```bash
 # replicaset 생성
 kubectl apply -f <replicaset yaml 파일 경로>
@@ -35,6 +38,6 @@ kubectl get pods --show-labels
 # replicaset scaling
 kubectl scale --replica=<Num> replicaset <replicasetName>
 
-# replicaset 삭제 
+# replicaset 삭제
 kubectl delete replicaset <replicasetName>
 ```
