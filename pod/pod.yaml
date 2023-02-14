@@ -1,24 +1,28 @@
-apiVersion: v1
-kind: Pod
-metadata:
-  name: nginx
-  namespace: default
+apiVersion: v1                                         # apiVersion
+kind: Pod                                              # object 종류 Pod로 명시
+metadata:                                              # object를 식별하는 정보
+  name: nginx                                          # object 이름
+  labels:                                              # object Labeling
+    app: nginx-demo
+    project: hsjoo
+  namespace: default                                   # namespace 기입 안적으면 default로 됨
 spec:
-  containers:
-    - name: nginx
-      image: nginx:1.14.2
-      ports:
-        - containerPort: 80
-      env:
-        - name: STUDENT_NAME
-          value: hsjoo
-        - name: STATE
-          value: "학생 이름은 $(STUDENT_NAME)입니다."
+  containers:                                          # container를 정의
+    - name: nginx                                      # container 이름
+      image: nginx:1.14.2                              # conatiner가 바라볼(다운받아 실행 할) image
+      ports:  
+        - containerPort: 80                            # container가 바라보는 port
+          protocol: tcp                                # container가 바라보는 
+      env:                                             # container안에서 사용할 환경 변수 정의
+        - name: STUDENT_NAME                           # 첫 번째 env name은 STUDENT_NAME
+          value: hsjoo                                 # STUDENT_NAME = hsjoo
+        - name: STATE                                  # 두 번째 env name은 STATE
+          value: "학생 이름은 $(STUDENT_NAME)입니다."    # 정의된 환경 변수를 $()로 불러와서 사용 가능
         - name: NODE_NAME
-          valueFrom:
-            fieldRef:
-              fieldPath: spec.nodeName
+          valueFrom:                                   # 쿠버네티스 오브젝트로부터 환경 변수 값을 얻음
+            fieldRef:                                  # spec, status의 field를 환경변수 값으로 참조
+              fieldPath: spec.nodeName                 # 참조할 field의 경로 선택
         - name: NODE_IP
           valueFrom:
             fieldRef:
-              fieldPath: status.hostIP
+              fieldPath: status.hostIP 
