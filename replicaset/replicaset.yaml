@@ -1,18 +1,17 @@
-apiVersion: apps/v1              
+apiVersion: apps/v1        
 kind: ReplicaSet
 metadata:
   name: replica-sample
 spec:
-  replicas: 3                   
-  selector:
+  replicas: 3                 # 복제 갯수             
+  selector:                   # 어느것을 복제 할지 선택
     matchLabels:
       app: nginx-demo
-  template:
+  template:                   # template(pod와 동일) 정의
     metadata:
       labels:
-        app: nginx-demo          
+        app: nginx-demo       # pod label 정의
     spec:
       containers:
         - name: app-container
           image: nginx
-       
