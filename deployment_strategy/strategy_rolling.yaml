@@ -1,0 +1,25 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: deployment-sample
+spec:
+  replicas: 5
+  minReadySeconds: 10  
+  strategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxSurge: 1 # 업데이트 과정에서 spec.replicas 수 기준 최대 새로 추가되는 파드 수
+      maxUnavailable: 1 # 업데이트 과정에 spec.replicas 수 기준 최대 이용 불가능 파드 수
+  selector:
+    matchLabels:
+      app: nginx-demo
+  template:
+    metadata:
+      labels:
+        app: nginx-demo
+    spec:
+      containers:
+        - name: nginx-container
+          image: nginx:1.21.1
+          ports:
+            - containerPort: 8080
