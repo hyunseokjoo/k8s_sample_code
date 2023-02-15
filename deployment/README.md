@@ -25,11 +25,15 @@ kubectl get pod -o wide
 # deployment update
 kubectl apply -f deployment_v2.yaml
 
-# scale down
+# app history 확인 (--revision옵션은 특정 버전 선택)
+kubectl rollout history deployment/deployment-sample
+kubectl rollout history deployment/deployment-sample --revision=2
 
+# app rollback
+kubectl rollout undo deployment/deployment-sample --to-revision=1
 
 # delete
-kubectl delete replicaset replica-sample
+kubectl delete deployment deployment-sample
 ```
 
 ### Deployment 관련 kubectl 명령어
@@ -39,13 +43,16 @@ kubectl delete replicaset replica-sample
 kubectl apply -f <replicaset yaml 파일 경로>
 
 # replicaset 조회
-kubectl get rs
-kubectl get rs <replicasetName> -o wide
-kubectl get pods --show-labels
+kubectl get deployment
+kubectl get deployment <replicasetName> -o wide
+kubectl get all -o wide
 
-# replicaset scaling
-kubectl scale --replica=<Num> replicaset <replicasetName>
+# app history 확인
+kubectl rollout history <deploymentName>/<deploymentAppName>
+
+# app histroy 특정 옵션 선택
+kubectl rollout history <deploymentName>/<deploymentAppName> --revision=<version>
 
 # replicaset 삭제
-kubectl delete replicaset <replicasetName>
+kubectl delete deployment <deploymentName>
 ```
