@@ -11,8 +11,14 @@ kubectl get replicaset
 kubectl get rs
 kubectl get rs replica-sample -o wide
 
+# get replicaset info detail
+kubectl describe rs replica-sample
+
 # get pod info
 kubectl get pods --show-labels
+
+# get events info 시간별 정렬
+kubectl get events --sort-by=metadata.creationTimestamp
 
 # scaleup
 kubectl apply -f replicaset_scaleup.yaml
