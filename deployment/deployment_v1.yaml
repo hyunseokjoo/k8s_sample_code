@@ -16,5 +16,5 @@ spec:
         - name: nginx-container
           image: nginx:1.14.2
           ports:
-            - containerPort: 8080
+            - containerPort: 80
     
