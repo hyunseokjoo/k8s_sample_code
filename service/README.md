@@ -15,3 +15,4 @@ kubectl apply -f loadbalancer.yaml
 # get deploy, rs, service info
 kubectl get all -o wide
 ```
+
