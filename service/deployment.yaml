@@ -16,5 +16,5 @@ spec:
         - name: nginx
           image: nginx:1.14.2
           ports:
-            - containerPort: 80   # container 안의 앱의 port로 설정해야 함
+            - containerPort: 80   # container안 앱의 port로 설정해야 함
           
