@@ -2,7 +2,7 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: deployment-sample
-  # kubernetes change-cause 기입
+  # 버전관리를 위해 kubernetes.io/change-cause 기입
   annotations:
     kubernetes.io/change-cause: "update deployment image nginx:1.22.1"
 spec:
