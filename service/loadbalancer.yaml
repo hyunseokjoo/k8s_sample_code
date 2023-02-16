@@ -1,0 +1,15 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: service-sample
+spec:
+  type: LoadBalancer 
+  selector:
+    app: nginx-demo
+  ports:
+    - port: 80          # 서비스의 port   
+      protocol: TCP
+      targetPort: 80    # Selector에 포함된 pod들의 port
+  # sessionAffinity: None 
+  
+      
