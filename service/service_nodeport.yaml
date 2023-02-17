@@ -9,8 +9,9 @@ spec:
   ports:
     - port: 80          # 서비스의 port
       protocol: TCP     
-      nodePort: 31000   # 해당 Node의 port
+      nodePort: 32000   # 해당 Node의 port
       targetPort: 80  # Selector에 포함된 pod들의 port
       
+
 
 

@@ -6,10 +6,10 @@ spec:
   type: LoadBalancer 
   selector:
     app: nginx-demo
-  ports:
+  ports:                # service의 port는 targetport와 매핑 할 수 있는데, 이는 편의상 동일하게 작성한다.
     - port: 80          # 서비스의 port   
       protocol: TCP
+      nodePort: 31000   # Nodeport와 다른 port 설정
       targetPort: 80    # Selector에 포함된 pod들의 port
-  # sessionAffinity: None 
   
       
