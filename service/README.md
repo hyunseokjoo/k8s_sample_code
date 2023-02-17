@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 # service sample code
 
 ### service_nodeport 실습 명령어
@@ -114,23 +113,3 @@ nslookup service-sample
 # request headless-svc
 curl headless-svc
 ```
-=======
-# Service sample code
-
-### Service 실습 명령어
-
-```bash
-# create deployment
-kubectl apply -f deployment.yaml
-
-# get deploy, rs, service info
-kubectl get all -o wide
-
-# get pod info
-kubectl apply -f loadbalancer.yaml
-
-# get deploy, rs, service info
-kubectl get all -o wide
-```
-
->>>>>>> c69ee45bdf126551437c571a59a0cfb36e6bf388
