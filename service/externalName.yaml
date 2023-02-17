@@ -1,0 +1,7 @@
+apiVersion: v1
+kind: Service
+metadata: 
+  name: externalname-sample # pod에서 DNS 호출 name이 됨
+spec:
+  type: ExternalName        # externalname type 설정
+  externalName: google.com  # pod에서 external-sample을 호출하면 실제로 변경 돼는 external addressexternalname-sample
