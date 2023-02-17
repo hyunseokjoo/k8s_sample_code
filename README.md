@@ -8,3 +8,4 @@ k8s yaml파일 sample 코드 입니다.
 - [ReplicaSet](./replicaset/)
 - [Deployment](./deployment/)
 - [Deployment 배포 정략](./deployment_strategy/)
+- [Service](./service/)
