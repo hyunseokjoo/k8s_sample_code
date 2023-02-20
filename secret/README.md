@@ -12,7 +12,7 @@ kubectl create secret generic db-config --from-file=secrets/
 kubectl get secret db-config -o yaml 
 
 # container 안에 파일 읽기
-kubectl exec -it web-server -- /bin/bash
+kubectl exec -it secret-sample -- /bin/bash
 cd var/share/nginx/html
 ls -al
 cat db.password
