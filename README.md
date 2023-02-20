@@ -9,3 +9,6 @@ k8s yaml파일 sample 코드 입니다.
 - [Deployment](./deployment/)
 - [Deployment 배포 정략](./deployment_strategy/)
 - [Service](./service/)
+- [Daemonset](./daemonset/)
+- [Ingress_IngressController](./ingress/)
+- [Taint_Tolerations](./taint_tolerations/)
