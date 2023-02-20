@@ -3,14 +3,15 @@ kind: Pod
 metadata:             
   name: hostpath
 spec:
+  volumes:                                   # 외부에 있는 볼륨 가져오기
+    - name: volumepath                       # container에서 사용할 name 정의
+      hostPath:                              # hostPath - vm instance 주소
+        path: /dev/test                      
+        type: DirectoryOrCreate 
   containers:       
     - name: nginx         
       image: nginx:1.14.2       
       volumeMounts:
-        - mountPath: /var/share/nginx/html
-          name: volumepath
-  volumes:
-    - name: volumepath
-      hostPath:
-        path: /dev/test
-        type: DirectoryOrCreate
+        - mountPath: /var/share/nginx/html   # container 안에 매핑할 주소
+          name: volumepath                   # 위에서 작성한 volume name
+  
