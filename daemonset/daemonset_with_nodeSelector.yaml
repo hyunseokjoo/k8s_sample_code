@@ -1,9 +1,9 @@
 apiVersion: apps/v1
 kind: DaemonSet
 metadata:
-  name: fluentd-daemonset
+  name: daemonset-sample
   labels:
-    k8s-app: fluentd-logging
+    app: fluentd-logging
 spec:
   selector:
     matchLabels:
@@ -13,15 +13,11 @@ spec:
       labels:
         name: fluentd
     spec:
-      tolerations:
-      - key: node-role.kubernetes.io/master
-        effect: NoSchedule
+      nodeSelector:        # nodeSelector label key:value 입력하여 node선택
+        node: development
       containers:
       - name: fluentd
         image: fluent/fluentd:v1.13-1
-        env:
-        - name: FLUENT_UID
-          value: "0"
         volumeMounts:
         - name: varlog
           mountPath: /var/log
