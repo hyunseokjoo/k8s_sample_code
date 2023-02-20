@@ -11,4 +11,5 @@ k8s yaml파일 sample 코드 입니다.
 - [Service](./service/)
 - [Daemonset](./daemonset/)
 - [Ingress_IngressController](./ingress/)
+- [volume](./volume/)
 - [Taint_Tolerations](./taint_tolerations/)
