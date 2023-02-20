@@ -1,0 +1,16 @@
+apiVersion: v1        
+kind: Pod      
+metadata:             
+  name: hostpath
+spec:
+  containers:       
+    - name: nginx         
+      image: nginx:1.14.2       
+      volumeMounts:
+        - mountPath: /var/share/nginx/html
+          name: volumepath
+  volumes:
+    - name: volumepath
+      hostPath:
+        path: /dev/test
+        type: DirectoryOrCreate
