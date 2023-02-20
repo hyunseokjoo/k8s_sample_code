@@ -1,0 +1,44 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: config-ref-sep-sample
+  labels:
+    name: nginx
+spec:
+  containers:
+    - name: nginx
+      image: nginx
+      ports:
+        - containerPort: 80
+      env:                     
+        - name: STUDENT_NAME         
+          valueFrom:
+            configMapKeyRef:
+              name: sample-config
+              key: STUDENT_NAME
+        - name: SUBJECT      
+          valueFrom:
+            configMapKeyRef:
+              name: sample-config
+              key: SUBJECT
+        - name: HELLO   
+          value: hello $(STUDENT_NAME), subject = $(SUBJECT)
+---
+apiVersion: v1
+kind: Pod
+metadata:
+  name: config-ref-sample
+  labels:
+    name: nginx
+spec:
+  containers:
+    - name: nginx
+      image: nginx
+      ports:
+        - containerPort: 80
+      envFrom:                 
+        - configMapRef:
+            name: sample-config
+      env:
+        - name: HELLO
+          value: hello $(STUDENT_NAME), subject = $(SUBJECT)
