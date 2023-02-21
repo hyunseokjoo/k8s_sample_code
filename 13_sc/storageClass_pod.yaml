@@ -1,0 +1,36 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: pvc-nfs-nginx
+  labels:
+    name: provision
+spec:
+  containers:
+  - name: nginx
+    image: nginx
+    volumeMounts:
+    - name: nfsvol
+      mountPath: /usr/share/nginx/html
+  volumes:
+  - name : nfsvol
+    persistentVolumeClaim:
+      claimName: nfs-storage-pvc         # 생성한 pvc 이름
+---
+apiVersion: v1
+kind: Pod
+metadata:
+  name: pvc-nfs-nginx-check
+  labels:
+    name: provision
+spec:
+  containers:
+  - name: nginx
+    image: nginx
+    volumeMounts:
+    - name: nfsvol
+      mountPath: /usr/share/nginx/html
+  volumes:
+  - name : nfsvol
+    persistentVolumeClaim:
+      claimName: nfs-storage-pvc         # 생성한 pvc 이름
+

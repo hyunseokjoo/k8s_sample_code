@@ -1,0 +1,37 @@
+kind: Deployment
+apiVersion: apps/v1
+metadata:
+  name: nfs-pod-provisioner
+  labels:
+    name: provision
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: nfs-pod-provisioner
+  strategy:
+    type: Recreate
+  template:
+    metadata:
+      labels:
+        app: nfs-pod-provisioner
+    spec:
+      serviceAccountName: nfs-pod-provisioner-sa
+      containers:
+        - name: nfs-client-provisioner
+          image: k8s.gcr.io/sig-storage/nfs-subdir-external-provisioner:v4.0.2
+          volumeMounts:
+            - name: nfs-provisioner
+              mountPath: /persistentvolumes
+          env:
+            - name: PROVISIONER_NAME
+              value: k8s-sigs.io/nfs-subdir-external-provisioner   # storageclass에서 provisioner의 이름으로 사용
+            - name: NFS_SERVER
+              value: 172.27.192.130
+            - name: NFS_PATH
+              value: /nfsVolume
+      volumes:
+        - name: nfs-provisioner
+          nfs:
+            server: 172.27.192.130
+            path: /nfsVolume

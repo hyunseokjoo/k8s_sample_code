@@ -16,4 +16,5 @@ k8s yaml파일 sample 코드 입니다.
 - [ConfigMap](./09_taint_tolerations/)
 - [Secret](./10_secret/)
 - [volume](./11_volume/)
-- [PV_PVC_SC](./12_pv_pvc_sc//)
+- [PV_PVC_SC](./12_pv_pvc_sc/)
+- [StorageClass](./13_sc/)

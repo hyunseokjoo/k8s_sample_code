@@ -1,0 +1,12 @@
+apiVersion: storage.k8s.io/v1
+kind: StorageClass
+metadata:
+  name: nfs-storageclass                                                   # pvc에서 사용할 storageClass Name
+  labels:
+    name: provision
+provisioner: k8s-sigs.io/nfs-subdir-external-provisioner                   # provisioner에서 생성한 Provisioner 이름
+parameters:
+  pathPattern: "${.PVC.namespace}/${.PVC.annotations.nfs.io/storage-path}" # waits for nfs.io/storage-path annotation, if not specified will accept as empty string.
+  onDelete: delete
+  archiveOnDelete: "false"
+
