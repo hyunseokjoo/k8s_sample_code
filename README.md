@@ -7,7 +7,7 @@ k8s yaml파일 sample 코드 입니다.
 - [Pod](./01_pod/)
 - [ReplicaSet](./02_replicaset/)
 - [Deployment](./03_deployment/)
-- [Deployment 배포 정략](./03-1_deployment_strategy/)
+- [Deployment 배포 전략](./03-1_deployment_strategy/)
 - [Daemonset](./04_daemonset/)
 - [Statefulset](./05_statefulset/)
 - [Service](./06_service/)
