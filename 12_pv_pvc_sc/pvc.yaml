@@ -2,10 +2,12 @@ apiVersion: v1
 kind: PersistentVolumeClaim
 metadata:
   name: pvc-nfs               # pvc의 이름으로 pod에서 볼륨을 요청할때 사용
+  labels:
+    name: nfs-storage
 spec:
-  storageClassName: ""
+  storageClassName: ""        # storageClass를 정의 하지 않아서 ""로 처리 (!중요)
   accessModes:
     - ReadWriteMany
   resources:
     requests:
-      storage: 1Gi            # 실제 pv에 요청하는 용량
+      storage: 10Gi            # 실제 pv에 요청하는 용량
