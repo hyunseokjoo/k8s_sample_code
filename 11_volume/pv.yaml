@@ -1,0 +1,16 @@
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: pv-nfs
+  labels:
+    name: pv-nfs
+spec:
+  capacity:                              # 용량
+    storage: 10Gi                        # PV 사이즈
+  persistentVolumeReclaimPolicy: Recycle # default 정책, 클레임이 해제된 후 pv은 유지 돼야함
+  accessModes:
+    - ReadWriteMany                      # 여러 클라이언트를 위한 읽기 쓰기 권한
+  nfs:
+    path: /nfsVolume                     # nfs의 file share name
+    server: 172.27.192.130               # nfs ip
+  
