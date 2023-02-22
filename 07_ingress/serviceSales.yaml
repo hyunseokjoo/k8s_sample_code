@@ -1,0 +1,42 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: deploy-sales
+  namespace: default
+  labels:
+    project: example
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: sales
+  template:
+    metadata:
+      labels:
+        app: sales
+        project: example
+    spec:
+      containers:
+      - image: hsj8314/sales:v1
+        name: sales
+        ports:
+        - containerPort: 5000
+          protocol: TCP
+
+--- 
+apiVersion: v1
+kind: Service
+metadata:
+  name: service-sales
+  namespace: default
+  labels:
+    project: example
+spec:
+  type: ClusterIP
+  ports:
+  - port: 80
+    protocol: TCP
+    targetPort: 5000
+  selector:
+    app: sales
+    project: example

@@ -1,0 +1,42 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: deploy-menu
+  namespace: default
+  labels:
+    project: example
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: menu
+  template:
+    metadata:
+      labels:
+        app: menu
+        project: example
+    spec:
+      containers:
+      - image: hsj8314/menu:v1
+        name: menu
+        ports:
+        - containerPort: 5000
+          protocol: TCP
+
+--- 
+apiVersion: v1
+kind: Service
+metadata:
+  name: service-menu
+  namespace: default
+  labels:
+    project: example
+spec:
+  type: ClusterIP
+  ports:
+  - port: 80
+    protocol: TCP
+    targetPort: 5000
+  selector:
+    app: menu
+    project: example
