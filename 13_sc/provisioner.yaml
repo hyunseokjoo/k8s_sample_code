@@ -27,11 +27,11 @@ spec:
             - name: PROVISIONER_NAME
               value: k8s-sigs.io/nfs-subdir-external-provisioner   # storageclass에서 provisioner의 이름으로 사용
             - name: NFS_SERVER
-              value: 172.27.192.130
+              value: {your_nfsServer}
             - name: NFS_PATH
-              value: /nfsVolume
+              value: {your_nfsPath}
       volumes:
         - name: nfs-provisioner
           nfs:
-            server: 172.27.192.130
-            path: /nfsVolume
+            server: {your_nfsServer}
+            path: {your_nfsPath}
