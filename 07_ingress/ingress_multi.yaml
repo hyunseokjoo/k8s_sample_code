@@ -1,33 +1,39 @@
 apiVersion: networking.k8s.io/v1
-kind: Ingress                       
+kind: Ingress
 metadata:
-  name: ingress-example     
-  namespace: default
+  name: ingress-multi
   labels:
+    name: ingress
     project: example
-spec:       
-  ingressClassName: nginx                    
+spec:
+  ingressClassName: nginx      
   rules:
   - host: hsjmenu.example.com
     http:
       paths:
       - pathType: Prefix
-        path: "/account"
-        backend:                  
-          service:
-            name: service-account
-            port: 
-              number: 80
-      - pathType: Prefix
-        path: "/menu"
-        backend: 
+        path: "/"
+        backend:
           service:
             name: service-menu
             port: 
               number: 80
+  - host: hsjaccount.example.com
+    http:
+      paths:
       - pathType: Prefix
-        path: "/sales"
-        backend: 
+        path: "/"
+        backend:
+          service:
+            name: service-account
+            port: 
+              number: 80
+  - host: hsjsales.example.com
+    http:
+      paths:
+      - pathType: Prefix
+        path: "/"
+        backend:
           service:
             name: service-sales
             port: 
